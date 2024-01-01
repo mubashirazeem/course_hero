@@ -1,0 +1,120 @@
+<h2>Sign up</h2>
+
+<%
+=begin%>
+ <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %> 
+<%
+=end%>
+
+
+<button id="studentButton">I am a Student</button>
+<button id="educatorButton">I am an Educator</button>
+
+<!-- Student form -->
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: 'studentForm' }) do |f| %>
+  <%= f.hidden_field :role, value: 'student' %>
+  <!-- other student-specific fields -->
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <!-- Rest of the form fields -->
+   <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+   <div class="field">
+    <%= recaptcha_tags %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Create my Account" %>
+  </div>
+<% end %>
+
+<!-- Educator form -->
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: 'educatorForm', style: 'display: none;' }) do |f| %>
+  <%= f.hidden_field :role, value: 'educator' %>
+  <!-- other educator-specific fields -->
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+  <!-- Rest of the form fields -->
+
+  <div class="actions">
+    <%= f.submit "Sign up as an Educator" %>
+  </div>
+<% end %>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const studentButton = document.getElementById('studentButton');
+    const educatorButton = document.getElementById('educatorButton');
+    const studentForm = document.getElementById('studentForm');
+    const educatorForm = document.getElementById('educatorForm');
+
+    studentButton.addEventListener('click', function() {
+      studentForm.style.display = 'block';
+      educatorForm.style.display = 'none';
+    });
+
+    educatorButton.addEventListener('click', function() {
+      studentForm.style.display = 'none';
+      educatorForm.style.display = 'block';
+    });
+  });
+</script>
+
+<%
+=begin%>
+ <script>
+  function onClick(e) {
+    e.preventDefault();
+    grecaptcha.enterprise.ready(async () => {
+      const token = await grecaptcha.enterprise.execute('6LcsGUIpAAAAALOJqo0zg2Axi1LRWywCHx8EAdA6', {action: 'LOGIN'});
+    });
+  }
+</script> 
+<%
+=end%>
+
+<%= render "devise/shared/links" %>
