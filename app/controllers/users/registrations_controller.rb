@@ -4,6 +4,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
+  def create
+    build_resource(sign_up_params)
+
+    if verify_recaptcha(model: resource) && resource.save
+      # reCAPTCHA verification successful and user signed up
+      sign_up(resource_name, resource)
+      respond_with resource, location: after_sign_up_path_for(resource)
+    else
+      # reCAPTCHA verification failed or user not signed up
+      clean_up_passwords resource
+      flash[:alert] = "reCAPTCHA verification failed. Please try again."
+      respond_with resource
+    end
+  end
+
   # GET /resource/sign_up
   # def new
   #   super
@@ -42,7 +57,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:role])
   end
 
   # If you have extra params to permit, append them to the sanitizer.

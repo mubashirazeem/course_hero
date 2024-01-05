@@ -1,0 +1,123 @@
+<div class="header mb-5 mt-5">
+  <div class="header-text">  
+    <h1 class="header-h1 ">Upload your document to start studying</h1>
+    <h5>See AI-powered answers, explanations, recommendations,<br> one-click tutor help, and more</h5>
+  </div>
+    <%= button_to "To Stripe", stripe_index_path, class: "btn btn-info btn-lg", style: "margin-left: 30px;", data: { turbo: false } %>  <div class="card text-center rounded shadow-lg p-3 mb-5 bg-white custom-rounded">
+    <div class="card-body ">
+      <div class="border index-border">
+        <div class="index-text">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none" width="80" height="70" >
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M18.75 5H30C36.9036 5 42.5 10.5964 42.5 17.5V23.75C42.5 27.2018 45.2982 30 48.75 30H55C61.9036 30 67.5 35.5964 67.5 42.5V68.75C67.5 72.2018 64.7018 75 61.25 75H18.75C15.2982 75 12.5 72.2018 12.5 68.75V11.25C12.5 7.79822 15.2982 5 18.75 5ZM41.7678 38.2322C41.2989 37.7634 40.663 37.5 40 37.5C39.337 37.5 38.7011 37.7634 38.2322 38.2322L28.2322 48.2322C27.2559 49.2085 27.2559 50.7915 28.2322 51.7678C29.2085 52.7441 30.7915 52.7441 31.7678 51.7678L37.5 46.0355L37.5 60C37.5 61.3807 38.6193 62.5 40 62.5C41.3807 62.5 42.5 61.3807 42.5 60L42.5 46.0355L48.2322 51.7678C49.2085 52.7441 50.7915 52.7441 51.7678 51.7678C52.7441 50.7915 52.7441 49.2085 51.7678 48.2322L41.7678 38.2322Z" fill="#002DE4"></path>
+            <path d="M47.5 17.5C47.5 13.1232 45.8932 9.12159 43.2373 6.05302C54.5671 9.01258 63.4874 17.9329 66.447 29.2627C63.3784 26.6068 59.3768 25 55 25H48.75C48.0596 25 47.5 24.4404 47.5 23.75V17.5Z" fill="#002DE4"></path>
+          </svg>
+          <h2 class="mt-4">Drag and drop or upload<br> your study document</h2>
+          <input class="form-control border mx-auto d-flex" type="search" placeholder="or type your question here" id="index-search-input"> 
+          <p id="index-text-size">Your document will be enriched using AI, shared on Course Hero, and used to extract content to assist in studying. <br>Terms of Use, Copyright Policy & Honor Code apply.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex">
+    <div>
+      <p class="m-0">For the best results, upload docs with many questions</p>
+    </div>
+  </div>
+
+  <div class="d-flex">
+    <div class="mx-2">Multiple choice</div>
+    <span class="mx-2">•</span>
+    <div class="mx-2">Fill-in-the-blank</div>
+    <span class="mx-2">•</span>
+    <div class="mx-2">Open-ended questions</div>
+  </div>
+</div>
+
+
+<div class="d-flex justify-content-center align-items-center vh-100 index-background">
+  <!-- First div on the first line -->
+  <div class="d-flex flex-column align-items-center mt-5 mb-5">
+    <div>
+      <h1 class="text-center font-weight-bold">Study seamlessly</h1>
+      <h4 class="text-center">Find all the relevant resources you need,<br> right within your own document</h4>
+    </div>
+  </div>
+</div>
+
+<!-- Second div on the second line -->
+<div class="d-flex flex-column align-items-center index-background">
+  <ul class="d-flex space-y-4 ml-3 list-unstyled pl-0 text-left text-md-center space-x-md-3 space-y-md-0 ml-md-0">
+    <!-- All three li tags on the same line -->
+
+    <li class="d-flex gap-3 text-nowrap">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="stroke-white mb-4 w-14 h-14 mr-6" width="30" height="30">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"></path>
+      </svg>
+      Step-by-step explanations
+    </li>
+
+    <li class="d-flex gap-3 text-nowrap ml-5">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="stroke-white mb-4 w-14 h-14 mr-6" width="30" height="30">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"></path>
+      </svg>
+      Recommendations
+    </li>
+
+    <li class="d-flex gap-3 text-nowrap ml-5">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="stroke-white mb-4 w-14 h-14 mr-6" width="30" height="30">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"></path>
+      </svg>
+      Help from expert tutors
+    </li>
+  </ul>
+  <button type="button" class="btn btn-outline-primary mb-5">Learn More</button>
+</div>
+
+<div class="custom-background">
+  <div class="index-card1">
+    <div class="row">
+      <!-- Left side with text -->
+      <div class="col-md-8 mt-5">
+        <h2>Find materials for your<br> course at your school</h2>
+        <div class="card" style="background-color: rgba(9, 11, 25); color: white; width: 50%; border-radius: 10px;">
+          <div class="row">
+            <!-- First Line -->
+            <div class="col-md-12 mt-3 ml-3">
+              <div class="d-flex align-items-center">
+                <h4>I am a student at</h4>
+                <div class="ml-3">
+                  <input class="form-control" type="search" placeholder="or type your question here"> 
+                </div> 
+                <h4 class="mx-2 ml-3"> and</h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <!-- Second Line -->
+            <div class="col-md-12 mt-3 ml-3 mb-3">
+              <div class="d-flex align-items-center">
+                <h4 class="mr-3">my course is</h4>
+                <input class="form-control col-4"  type="search" placeholder="or">
+                <button type="button" class="btn btn-primary ml-3">Get Course Materials</button>
+              </div> 
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right side with image -->
+      <div class="col-md-4">
+        <img src="https://wpforms.com/wp-content/uploads/2018/09/send-a-pdf-in-a-form-notification-email.jpg" alt="" class="img-fluid" style="width: 100%; height: 400px;">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="text-center index-background pb-5 pt-5">
+  <h3 class="font-weight-bold pb-3">Get help with Course Hero's AI</h3>
+  <button type="button" class="btn btn-primary">Let's Go</button>
+</div>
+
+

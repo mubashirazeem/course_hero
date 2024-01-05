@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <%= link_to(root_path, class: 'navbar-brand') do %>
+    <%= image_tag('https://assets.coursehero.com/ssi/27b7037f838acd0278f7.svg', alt: 'Logo') %>
+  <% end %>
+  
+  <form class="form-inline my-2 my-lg-0">
+    <div class="input-group search-bar">
+        <input class="form-control border-end-0 border rounded-pill" placeholder="search"  id="example-search-input">
+        <span class="input-group-append">
+            <button class="btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill" type="button">
+                <i class="bi bi-search"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                </svg>
+            </button>
+        </span>
+    </div>
+  </form> 
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <!-- Your existing navigation items -->
+      <li class="nav-item active">
+        <a class="nav-link" href="#">AI Homework Help <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Expert Help</a>
+      </li>
+      <li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Study Resources
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">School</a>
+          <a class="dropdown-item" href="#"><%= link_to "Sign Out", destroy_user_session_path, data: { "turbo-method": :delete }, class: "dropdown-item" %></a>
+        </div>
+      </li>
+    </ul>
+    
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <%= link_to "Sign Out", destroy_user_session_path, data: { "turbo-method": :delete }, class: "nav-link btn btn-primary"%>      
+      </li>
+      <li class="nav-item">
+        <%= link_to "Log in", new_user_session_path, class: "nav-link"%>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Join", new_user_registration_path, class: "nav-link btn btn-primary", style: "color: white;"%>
+      </li>
+    </ul>
+  </div>
+</nav>

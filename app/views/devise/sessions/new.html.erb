@@ -1,8 +1,9 @@
-<h2>Log in</h2>
 
-<%
-=begin%>
- <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+<!-- 
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -23,13 +24,79 @@
   <div class="actions">
     <%= f.submit "Log in" %>
   </div>
-<% end %> 
-<%
-=end%>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <!-- common login fields -->
-  <%= f.submit 'Log in' %>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%= render "devise/shared/links" %> -->
+
+
+
+
+
+
+<div class="login-first">
+  <!-- Left side div with less space -->
+  <div class="card left-card">
+    <h3 class="mb-4">Discover why more than 20 million students and educators use Course Hero.</h3>
+    <div class="mb-4">
+      <h4>
+        As a member, you get 
+        <span class="font-weight-bold">
+          immediate access
+        </span> 
+        to:
+      </h4>
+    </div>
+
+    <div>
+      <img width="40" height="40" src="https://assets.coursehero.com/ssi/1e7d75a61ada6308d631.svg">
+      <p>The largest and best collection of online learning resources—guaranteed.</p>
+    </div>
+
+    <div>
+      <img width="40" height="40" src="https://assets.coursehero.com/ssi/ca3eac71ff07f8c0c22b.svg">
+      <p>Hundreds of expert tutors available 24/7. Get answers and explanations in as little as 15 minutes.</p>
+    </div>
+  </div>
+
+  <!-- Right side div with more space -->
+  <div class="card d-flex justify-content-center align-items-center login-form", style="width: 100%;">
+    <div class="card right-card d-flex justify-content-center align-items-center rounded shadow-lg p-3 mb-5 bg-white custom-rounded mt-5 mb-5", style="width: 50%;"> 
+      <h2 class="font-weight-bold">Welcome back!</h2>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="field mt-3">
+          <%= f.label :email %> address<br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'%>
+        </div>
+
+        <div class="field mt-3">
+          <div class="d-flex justify-content-between">
+            <%= f.label :password %>   
+            <%= link_to "Forgot password?", new_password_path(resource_name) %>
+          </div>
+          <%= f.password_field :password, autocomplete: "current-password", class: 'form-control'%>
+        </div>
+
+
+        <div class="field mt-3">
+          <%= recaptcha_tags %>
+        </div> 
+
+
+        <div class="actions mt-3">
+          <%= f.submit "Log in" , class: "btn btn-primary btn-lg btn-block"%>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="field mt-3">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

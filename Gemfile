@@ -68,4 +68,6 @@ end
 
 gem 'devise' 
 
-gem 'recaptcha', require: 'recaptcha/rails'
+gem 'recaptcha', '~> 5.16'
+
+gem 'stripe'
