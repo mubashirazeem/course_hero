@@ -1,38 +1,160 @@
-<h2>Sign up</h2>
+<div class="login-first">
+  <!-- Left side div with less space -->
+  <div class="card left-card">
+    <h3 class="mb-4">Discover why more than 20 million students and educators use Course Hero.</h3>
+    <div class="mb-4">
+      <h4>
+        As a member, you get 
+        <span class="font-weight-bold">
+          immediate access
+        </span> 
+        to:
+      </h4>
+    </div>
+
+    <div>
+      <img width="40" height="40" src="https://assets.coursehero.com/ssi/1e7d75a61ada6308d631.svg">
+      <p>The largest and best collection of online learning resources—guaranteed.</p>
+    </div>
+
+    <div>
+      <img width="40" height="40" src="https://assets.coursehero.com/ssi/ca3eac71ff07f8c0c22b.svg">
+      <p>Hundreds of expert tutors available 24/7. Get answers and explanations in as little as 15 minutes.</p>
+    </div>
+  </div>
+
+  <!-- Right side div with more space -->
+  <div class="card d-flex justify-content-center align-items-center login-form", style="width: 100%;">
+    <div class="card right-card d-flex justify-content-center align-items-center rounded shadow-lg p-3 mb-5 bg-white custom-rounded mt-5 mb-5", style="width: 50%;"> 
+      <h1 class="font-1 font-weight-bold mt-5">Join Course Hero.</h1>
+      <p>Get access to millions of study documents, 24/7 tutor<br> help, textbook solutions, and more.</p>
+      
+      <div class="role-buttons">
+        <button id="studentButton" class="btn btn-primary">I'm a Student</button>
+        <button id="educatorButton" class="btn btn-primary">I'm an Educator</button>
+      </div>
+
+      <!-- Student form -->
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: 'studentForm' }) do |f| %>
+        <%= f.hidden_field :role, value: 'student' %>
+        <!-- other student-specific fields -->
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <!-- Rest of the form fields -->
+        <div class="field mt-3">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+        </div>
+
+        <div class="field mt-3">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password", class: 'form-control'%>
+        </div>
+
+        <div class="field mt-3">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+        </div>
+
+        <div class="field mt-3">
+          <%= recaptcha_tags %>
+        </div>
+
+        <div class="actions mt-3">
+          <%= f.submit "Create my Account as Student", class: "btn btn-primary btn-lg btn-block" %>
+        </div>
+      <% end %>
+
+            <!-- Educator form -->
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: 'educatorForm', style: 'display: none;' }) do |f| %>
+        <%= f.hidden_field :role, value: 'educator' %>
+        <!-- other educator-specific fields -->
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="field mt-3">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+        </div>
+
+        <div class="field mt-3">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+        </div>
+
+        <div class="field mt-3">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+        </div>
+
+        <div class="field mt-3">
+          <%= recaptcha_tags %>
+        </div>
+
+        <!-- Password and other fields specific to educators -->
+
+        <div class="actions mt-3">
+          <%= f.submit "Create my Account as Educator", class: "btn btn-primary btn-lg btn-block" %>
+        </div>
+
+
+      <% end %>
+      <div class="text-center mt-3">  
+        Already have an account? <%= link_to "Log in", new_session_path(resource_name) %><br />
+      </div>
+      <div class="text-center mt-3">
+        <p>By creating an account, you agree with Course Hero's Terms of Use and Honor Code, and acknowledge that your personal information will be processed in accordance with our Privacy Policy.</p>
+      </div>
+
+    
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const studentButton = document.getElementById('studentButton');
+          const educatorButton = document.getElementById('educatorButton');
+          const studentForm = document.getElementById('studentForm');
+          const educatorForm = document.getElementById('educatorForm');
+
+          studentButton.addEventListener('click', function() {
+            studentForm.style.display = 'block';
+            educatorForm.style.display = 'none';
+          });
+
+          educatorButton.addEventListener('click', function() {
+            studentForm.style.display = 'none';
+            educatorForm.style.display = 'block';
+          });
+        });
+      </script> 
+      
+    
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <%
 =begin%>
- <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %> 
-<%
-=end%>
-
-
-<button id="studentButton">I am a Student</button>
-<button id="educatorButton">I am an Educator</button>
+<div class="role-buttons">
+  <button id="studentButton">I am a Student</button>
+  <button id="educatorButton">I am an Educator</button>
+</div>
 
 <!-- Student form -->
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: 'studentForm' }) do |f| %>
@@ -41,7 +163,7 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <!-- Rest of the form fields -->
-   <div class="field">
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
@@ -59,32 +181,50 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-   <div class="field">
+  <div class="field">
     <%= recaptcha_tags %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Create my Account" %>
+    <%= f.submit "Create my Account as Student" %>
   </div>
 <% end %>
 
-<!-- Educator form -->
+      <!-- Educator form -->
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: 'educatorForm', style: 'display: none;' }) do |f| %>
   <%= f.hidden_field :role, value: 'educator' %>
   <!-- other educator-specific fields -->
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
-  <!-- Rest of the form fields -->
+
+  <div class="field">
+    <%= recaptcha_tags %>
+  </div>
+        
+  <!-- Password and other fields specific to educators -->
 
   <div class="actions">
-    <%= f.submit "Sign up as an Educator" %>
+    <%= f.submit "Create my Account as Educator" %>
   </div>
 <% end %>
-
+  
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const studentButton = document.getElementById('studentButton');
@@ -102,19 +242,7 @@
       educatorForm.style.display = 'block';
     });
   });
-</script>
-
-<%
-=begin%>
- <script>
-  function onClick(e) {
-    e.preventDefault();
-    grecaptcha.enterprise.ready(async () => {
-      const token = await grecaptcha.enterprise.execute('6LcsGUIpAAAAALOJqo0zg2Axi1LRWywCHx8EAdA6', {action: 'LOGIN'});
-    });
-  }
 </script> 
+
 <%
 =end%>
-
-<%= render "devise/shared/links" %>
