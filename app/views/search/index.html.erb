@@ -1,0 +1,25 @@
+<div class="d-flex flex-column align-items-center">
+  <div>
+    <h1 class="mb-5 mt-5">All searches</h1>
+  </div>
+  
+  <div class="d-flex flex-wrap justify-content-center">
+    <% if @pdfs.any? %>
+      <% @pdfs.each do |pdf| %>
+        <div class="card-container mb-4" style="width: 25%; margin-right: 20px; margin-bottom: 20px;">
+          <div class="card" style="border-radius: 15px !important;">
+            <img src="<%= asset_path('pdf.png') %>" alt="Standard Image">
+            <div class="card-content" style="padding: 20px;">
+              <%= link_to pdf.title, pdf_path(pdf) %> <br>
+              <%= pdf.doc_type.name %> <br>
+              <%= pdf.course_name %> <br>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p>No results found.</p>
+    <% end %>
+  </div>
+
+</div>

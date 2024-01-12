@@ -1,0 +1,80 @@
+<div class="pdf-show">
+  <div class="header mb-5">
+    <div class="header1">
+      <div>
+        <h4 class="font-weight-bold"><%= @pdf.title %></h4>
+      </div>
+      <div>
+        <ul class="list-unstyled d-flex">
+          <li class="mr-4"><%= current_user.school.name %></li>
+          <li class="mr-4"><%= @pdf.course_name %></li>
+          <li class="mr-4"><%= current_user.email %></li>
+          <li><%= @pdf.created_at.strftime("%m/%d/%Y") %></li>
+        </ul>        
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <!-- <div>
+      <div class="d-flex justify-content-center" style="width: 100%;">
+        <div class="card rounded shadow-lg p-3 bg-white custom-rounded" style="width: 50%;">
+          <div class="index-border">  
+          
+            <embed src="<%= url_for(@pdf.document) %>" type="application/pdf" width="100%" height="600px" style="filter: blur(3px);"/>             
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <div>
+      <div class="d-flex justify-content-center" style="width: 100%;">
+        <div class="card rounded shadow-lg p-3 bg-white custom-rounded" style="width: 50%;">
+          <div class="index-border">  
+            <!-- Embed PDF using embed tag with blur -->
+            <embed id="pdfEmbed" src="<%= url_for(@pdf.document) %>" type="application/pdf" width="100%" height="600px" style="filter: blur(3px);" class="blurred-pdf"/>   
+            
+            <% if @pdf.unlock_pdf? %>
+              <%= button_to "Unblur PDF", unblur_pdf_path(@pdf), method: :put, class: 'btn btn-primary mt-2', id: 'unblurButton' %>
+            <% else %>
+              <p class="text-danger mt-2">You don't have any unlocks left to unblur this PDF.</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <style>
+      .blurred-pdf {
+        filter: blur(3px);
+      }
+    
+      .unblurred-pdf {
+        filter: blur(0);
+      }
+    </style>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        var pdfEmbed = document.getElementById('pdfEmbed');
+        var unblurButton = document.getElementById('unblurButton');
+    
+        unblurButton.addEventListener('click', function () {
+          pdfEmbed.classList.remove('blurred-pdf');
+          pdfEmbed.classList.add('unblurred-pdf');
+        });
+      });
+    </script>
+    
+
+
+
+
+
+    <div>
+
+    </div>
+
+  </div>
+  
+</div>

@@ -1,0 +1,30 @@
+.dashboard {
+  .dashboard-1{
+    padding-top: 80px;
+    padding-bottom: 24px;
+    border-bottom: 2px;
+    margin-bottom: 8px;
+    margin-left: 20px;
+  }
+
+  .dashboard-container {
+    display: flex;
+  }
+
+  .left-aside {
+    flex: 15%; /* Takes up 20% of the available space on the left */
+    margin-right: 20px; /* Adjust the margin as needed */
+  }
+  
+  .right-content {
+    flex: 85%; /* Takes up 80% of the available space on the right */
+  }
+
+  .right-first {
+    padding-left: 56px;
+    padding-right: 56px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+}

@@ -7,3 +7,18 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+
+DocType.create(name: "Assignment")
+DocType.create(name: "Assessment")
+DocType.create(name: "Lab Report")
+DocType.create(name: "Notes")
+DocType.create(name: "Essay")
+DocType.create(name: "Test Prep")
+DocType.create(name: "Lecture Slides")
+DocType.create(name: "Homework Help")
+
+
+
+School.create(name: "University of Management & Technology")
+School.create(name: "University of Central Punjab")
