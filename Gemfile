@@ -70,4 +70,20 @@ gem 'devise'
 
 gem 'recaptcha', '~> 5.16'
 
+gem 'shutup'
+
 gem 'stripe'
+
+gem 'ransack'
+
+gem 'pry'
+
+gem "bullet"
+
+gem 'rubocop'
+
+gem 'rails_best_practices'
+
+gem 'overcommit'
+
+gem 'bundler-audit'

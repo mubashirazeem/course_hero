@@ -1,0 +1,16 @@
+.pdf-show {
+  .header {
+    padding-top: 32px;
+    padding-bottom: 24px;
+  }
+
+  .header1 {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .header1 p {
+    margin: 0;
+  }
+
+}
