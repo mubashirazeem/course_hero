@@ -13,4 +13,8 @@
     margin: 0;
   }
 
+  .pdf-viewer {
+    filter: blur(3px);
+  }
+
 }

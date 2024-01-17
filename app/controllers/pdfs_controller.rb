@@ -2,16 +2,20 @@ class PdfsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    # @pdfs = Pdf.all
     @pdfs = current_user.pdfs
-    # @blurred_pdfs = Pdf.where.not(user: current_user).limit(5)
-    @blurred_pdfs = Pdf.where.not(user: current_user).update_all(blurred: true)
-
+    # @blurred_pdfs = Pdf.where.not(user: current_user).update_all(blurred: true)
   end
 
+  # def show
+  #   @pdf = Pdf.find(params[:id])
+    
+  #   @pdf.update(unlocked: true) if current_user == @pdf.user
+  # end
   def show
     @pdf = Pdf.find(params[:id])
+    @pdf.update(unlocked: true) if current_user == @pdf.user && !@pdf.unlocked
   end
+  
   
   def new
     @pdf = Pdf.new
@@ -32,18 +36,70 @@ class PdfsController < ApplicationController
       redirect_to root_path, alert: 'You need to be signed in to upload PDFs.'
     end
   end
-  
-  def unlock_pdf
-    @pdf = Pdf.find(params[:id])
 
+  def unblur
+    @pdf = Pdf.find(params[:id])
+  
     if current_user.unlocks_count.positive?
       current_user.decrement!(:unlocks_count)
       @pdf.update(unlocked: true)
-      redirect_to pdfs_path, notice: 'PDF unlocked successfully.'
+      redirect_to pdf_path(@pdf), notice: 'PDF unlocked successfully.'
     else
       redirect_to pdfs_path, alert: 'Insufficient unlocks remaining.'
     end
   end
+
+  def unlock_pdf
+    @pdf = Pdf.find(params[:id])
+  
+    if current_user.unlocks_count.positive?
+      current_user.decrement!(:unlocks_count)
+      @pdf.update(unlocked: true)
+      render json: { success: true, unlocks_count: current_user.unlocks_count }
+    else
+      render json: { success: false, message: 'Insufficient unlocks remaining.' }
+    end
+  end
+
+  # def unlock_pdf
+  #   @pdf = Pdf.find(params[:id])
+
+  #   if current_user.unlocks_count.positive?
+  #     current_user.decrement!(:unlocks_count)
+  #     @pdf.update(unlocked: true)
+  #     puts "PDF Unlocked: #{@pdf.unlocked?}"  # Debugging statement
+  #     render 'show', notice: 'PDF unlocked successfully.'
+  #     # redirect_to pdfs_path, notice: 'PDF unlocked successfully.'
+  #   else
+  #     redirect_to pdfs_path, alert: 'Insufficient unlocks remaining.'
+  #   end
+  # end
+
+
+
+  # def unlock_pdf_ajax
+  #   @pdf = Pdf.find(params[:id])
+  
+  #   if current_user.unlocks_count.positive?
+  #     current_user.decrement!(:unlocks_count)
+  #     @pdf.update(unlocked: true)
+  #     render json: { success: true, unlocks_count: current_user.unlocks_count }
+  #   else
+  #     render json: { success: false, message: 'Insufficient unlocks remaining.' }
+  #   end
+  # end
+
+  def unlock_pdf_ajax
+    @pdf = Pdf.find(params[:id])
+    if current_user.unlocks_count.positive?
+      current_user.decrement!(:unlocks_count)
+      @pdf.update(unlocked: true) unless @pdf.unlocked
+      render json: { success: true, unlocks_count: current_user.unlocks_count }
+    else
+      render json: { success: false, message: 'Insufficient unlocks remaining.' }
+    end
+  end
+  
   
   private
 

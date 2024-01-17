@@ -25,7 +25,7 @@ class User < ApplicationRecord
   protected
   
   def grant_unlocks
-    if uploads_count % 10 == 0 && uploads_count != 0
+    if uploads_count % 1 == 0 && uploads_count != 0
       increment!(:unlocks_count, 5)
     end
   end
