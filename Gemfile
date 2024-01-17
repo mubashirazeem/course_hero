@@ -76,6 +76,7 @@ gem 'stripe'
 
 gem 'ransack'
 
+
 gem 'pry'
 
 gem "bullet"
@@ -87,3 +88,9 @@ gem 'rails_best_practices'
 gem 'overcommit'
 
 gem 'bundler-audit'
+
+gem 'factory_bot_rails'
+
+group :development, :test do
+  gem 'rspec-rails'
+end

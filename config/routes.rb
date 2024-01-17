@@ -11,8 +11,14 @@ Rails.application.routes.draw do
   # root "posts#index"
   
   resources :users
+  resources :pdfs do
+    member do
+      put 'unblur'
+      put 'unlock_pdf'
+    end
+  end
 
-  resources :pdfs
+  # resources :pdfs
 
   root to: 'home#index'
 
