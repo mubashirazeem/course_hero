@@ -18,3 +18,11 @@
   }
 
 }
+
+@media screen and (max-width: 768px) {
+  .pdf-show {
+    .header-list li{
+      font-size: 60%;
+    }
+  }
+}

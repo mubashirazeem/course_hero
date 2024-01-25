@@ -1,4 +1,6 @@
+// debugger;
 document.addEventListener('turbo:load', function () {
+  sleep(100);
   // Get references to the PDF embed element and the unblur button
   var pdfEmbedDiv = document.getElementById('pdfEmbed');
   var pdfEmbed = document.getElementById('pdfEmbed1');
@@ -59,3 +61,9 @@ document.addEventListener('turbo:load', function () {
     }
   }
 });
+
+
+function sleep(delay) {
+  var start = new Date().getTime();
+  while (new Date().getTime() < start + delay);
+}

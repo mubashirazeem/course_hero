@@ -14,10 +14,12 @@
   .left-aside {
     flex: 15%; /* Takes up 20% of the available space on the left */
     margin-right: 20px; /* Adjust the margin as needed */
+    /* background-color: black; */
   }
   
   .right-content {
     flex: 85%; /* Takes up 80% of the available space on the right */
+    /* background-color: black; */
   }
 
   .right-first {
@@ -27,4 +29,56 @@
     padding-bottom: 80px;
   }
 
+  .first-tag {
+    margin-bottom: 80px;
+
+  }
+  .first-tag-svg {
+    width: 38%;
+  }
+  .pdf-show-container{
+    width: 25%; 
+    margin-right: 20px; 
+    margin-bottom: 20px;   
+  }
+  .pdf-show-card{
+    border-radius: 15px !important;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .dashboard {
+    .dashboard-container {
+      flex-direction: column; 
+    }
+
+    .pdf-show{
+      flex-direction: column;
+    }
+
+    .pdf-show-container{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80%;
+    }
+
+    .first-tag-svg {
+      width: auto;
+    }
+
+    .first-tag-button {
+      font-size: 55%;  
+    }
+
+    .first-tag {
+      h1{
+        font-size: xx-large;
+      } 
+      h4{
+        font-size: large;
+      } 
+    }
+  }
 }

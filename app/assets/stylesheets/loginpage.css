@@ -1,37 +1,47 @@
 .login-first{
-  display: flex; 
-  align-items: stretch; 
-  justify-content: space-between;
+  .login-first{
+    display: flex; 
+    align-items: stretch; 
+    justify-content: space-between;
+  }
+
+  .login-inbetweenborder{
+    border-right: 1px solid #ccc;
+    width: 5%; 
+  }
+
+  .login-form{
+    background-color: rgba(222, 238, 242);
+  }
+
+  .left-card {
+    width: 40%;
+    padding: 80px 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left-card div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .left-card img {
+    margin-right: 20px;
+  }
+
+  .right-card {
+    padding-top: 56px;
+    padding: 56px;
+  }
 }
 
-.login-inbetweenborder{
-  border-right: 1px solid #ccc;
-  width: 5%; 
-}
-
-.login-form{
-  background-color: rgba(222, 238, 242);
-}
-
-.left-card {
-  width: 40%;
-  padding: 80px 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.left-card div {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.left-card img {
-  margin-right: 20px;
-}
-
-.right-card {
-  padding-top: 56px;
-  padding: 56px;
+@media screen and (max-width: 768px) {
+  .login-first {
+    .left-card{
+      display: none;
+    }
+  }
 }

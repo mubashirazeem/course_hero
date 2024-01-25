@@ -1,32 +1,3 @@
-
-/* 
-.header {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh; /* Adjust as needed 
-}
-
-.header-text {
-  margin-bottom: 3%;
-}
-
-.header-h1 {
-  font-weight: bold;
-}
-
-.custom-rounded {
-  border-radius: 50%;
-}
-.border {
-  border-style: dashed;
-}
-.card {
-  width: 70%;
-} */
-
 .indexmain {
 
   body{
@@ -44,7 +15,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* Adjust as needed */
+    height: 100vh;
   }
 
   .header-text {
@@ -92,11 +63,11 @@
   }
 
   .left-content {
-    width: 60%; /* Adjust the width as needed */
+    width: 60%;
   }
 
   .right-content {
-    width: 40%; /* Adjust the width as needed */
+    width: 40%;
   }
 
   .custom-background {
@@ -110,5 +81,9 @@
     margin-top: 136px;
     margin-left: 112px;
   }
-
+  @media screen and (max-width: 768px) {
+    .indexmain {
+      
+    }
+  }
 }
