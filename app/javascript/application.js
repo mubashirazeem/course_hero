@@ -5,3 +5,4 @@ import "controllers"
 // = require turbolinks
 // = require_tree .
 // = require custom
+//= require ahoy

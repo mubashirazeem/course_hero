@@ -10,8 +10,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   
+  # mount Ahoy::Engine, at: "/ahoy"
+
   resources :users
-  resources :pdfs do
+  
+  resources :pdfs, param: :id do
     member do
       put 'unblur'
       put 'unlock_pdf'
